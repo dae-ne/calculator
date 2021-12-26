@@ -4,6 +4,13 @@
 
   --color-page-background: #E5E5E5;
   --color-main-background: #FFFFFF;
+
+  --button-color-primary: #212638;
+  --button-color-secondary: #34509E;
+  --button-color-tertiary: #8490FF;
+
+  --text-color-light: #FFFFFF;
+  --text-color-dark: #000000;
 }
 
 * {
@@ -14,26 +21,65 @@
 }
 
 html {
-  font-family: var(--font-default), sans-serif;
   font-size: 100%;
 }
 
 body {
   background-color: var(--color-page-background);
+  color: var(--text-color-dark);
+}
+
+body, button {
+  font-family: var(--font-default), sans-serif;
 }
 
 .container {
-  max-width: 375px;
-  height: 400px;
+  max-width: 376px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 60px 30px;
   background-color: var(--color-main-background);
 }
 
 .keyboard {
-
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .button {
+  height: 64px;
+  border-width: 0;
+  border-radius: 32px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.button.button--circle {
   
+}
+
+.button.button--wide {
+  width: 148px;
+}
+
+.button.button--primary {
+  background-color: var(--button-color-primary);
+  color: var(--text-color-light);
+}
+
+.button.button--secondary {
+  background-color: var(--button-color-secondary);
+  color: var(--text-color-light);
+}
+
+.button.button--tertiary {
+  background-color: var(--button-color-tertiary);
+}
+
+.button.button--small-font {
+  font-size: 26px;
+}
+
+.button .button__inner {
+  width: 64px;
 }
