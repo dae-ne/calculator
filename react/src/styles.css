@@ -1,0 +1,39 @@
+:root {
+  --font-default: 'Roboto';
+  --font-header: 'Chathura';
+
+  --color-page-background: #E5E5E5;
+  --color-main-background: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-default), sans-serif;
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--color-page-background);
+}
+
+.container {
+  max-width: 375px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: var(--color-main-background);
+}
+
+.keyboard {
+
+}
+
+.button {
+  
+}
