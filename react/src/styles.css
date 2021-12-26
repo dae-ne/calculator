@@ -33,11 +33,15 @@ body, button {
   font-family: var(--font-default), sans-serif;
 }
 
-.container {
+.app {
   max-width: 376px;
   margin: 0 auto;
   padding: 60px 30px;
   background-color: var(--color-main-background);
+}
+
+.app__keyboard {
+  margin-top: 40px;
 }
 
 .keyboard {
@@ -52,10 +56,6 @@ body, button {
   border-radius: 32px;
   font-size: 36px;
   cursor: pointer;
-}
-
-.button.button--circle {
-  
 }
 
 .button.button--wide {
@@ -82,4 +82,15 @@ body, button {
 
 .button .button__inner {
   width: 64px;
+}
+
+.display {
+  margin: 0 10px;
+}
+
+.display .display__content {
+  font-family: var(--font-header), sans-serif;
+  font-size: 130px;
+  line-height: 60px;
+  text-align: right;
 }
