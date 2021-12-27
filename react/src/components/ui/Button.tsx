@@ -11,6 +11,7 @@ export interface ButtonProps {
   color?: ButtonColor;
   fontSize?: ButtonFontSize;
   children?: string | number;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
@@ -18,6 +19,7 @@ export const Button = ({
   variant = 'circle',
   color = 'primary',
   fontSize = 'large',
+  disabled,
   onClick,
   children
 }: ButtonProps) => {
@@ -30,6 +32,7 @@ export const Button = ({
           `button--${color}`,
           `button--${fontSize}-font`
         )}
+      disabled={disabled}
       onClick={onClick}
     >
       <div className="button__inner">

@@ -1,29 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function useSteps<T>(steps: T[]) {
-  const [index, setIndex] = useState(0);
-  const [step, setStep] = useState(steps[0]);
-
-  useEffect(() => {
-    setStep(steps[index]);
-  }, [index, steps]);
+  const [state, setState] = useState({ index: 0, step: steps[0] });
 
   const nextStep = () => {
+    const { index } = state;
     const lastIncrementableIndex = steps.length - 2;
-    lastIncrementableIndex >= index
-      ? setIndex(0)
-      : setIndex(prev => prev + 1) 
+    index >= lastIncrementableIndex
+      ? setState({ index: 0, step: steps[0] })
+      : setState(prev => {
+        const newIndex = prev.index + 1;
+        return { index: newIndex, step: steps[newIndex] }
+      });
   };
 
   const goToStep = (step: T) => {
     const newIndex = steps.indexOf(step);
 
     if (newIndex === -1) {
-      throw new Error('Step doesn\'t exist');
+      throw new Error('This step doesn\'t exist');
     }
 
-    setIndex(newIndex);
+    setState({ index: newIndex, step: steps[newIndex] });
   }
 
-  return { step, nextStep, goToStep };
+  return { step: state.step, nextStep, goToStep };
 }
