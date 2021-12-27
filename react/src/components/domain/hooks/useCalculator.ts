@@ -26,18 +26,6 @@ const initialState: State = {
 
 const steps: Steps[] = Object.values(Steps).filter((step): step is Steps => typeof(step) === 'number');
 
-const calculateNewValue = (
-  decimalMode: boolean,
-  previousValue: number,
-  decimals: number,
-  value: number
-) => {
-  const newValue= decimalMode
-    ? previousValue + value / (Math.pow(10, decimals))
-    : previousValue * 10 + value;
-  return Number.parseFloat(newValue.toFixed(decimals));
-};
-
 export const useCalculator = () => {
   const [state, setState] = useState<State>(initialState);
   const { result, calculate, clear: clearResult } = useMath();
@@ -55,18 +43,34 @@ export const useCalculator = () => {
   };
 
   const onNumberClick = (value: number) => {
+    const calculateDecimals = (decimalMode: boolean, decimals: number) => {
+      return decimalMode ? decimals + 1 : decimals;
+    };
+
+    const calculateNewValue = (
+      decimalMode: boolean,
+      previousValue: number,
+      decimals: number,
+      value: number
+    ) => {
+      const newValue= decimalMode
+        ? previousValue + value / (Math.pow(10, decimals))
+        : previousValue * 10 + value;
+      return Number.parseFloat(newValue.toFixed(decimals));
+    };
+
     switch (step) {
       case Steps.FirstValue:
         setState(prev => ({
           ...prev,
-          decimals: prev.decimalMode ? prev.decimals + 1 : prev.decimals,
+          decimals: calculateDecimals(prev.decimalMode, prev.decimals),
           firstValue: calculateNewValue(prev.decimalMode, prev.firstValue, prev.decimals, value),
         }));
         break;
       case Steps.SecondValue:
         setState(prev => ({
           ...prev,
-          decimals: prev.decimalMode ? prev.decimals + 1 : prev.decimals,
+          decimals: calculateDecimals(prev.decimalMode, prev.decimals),
           secondValue: calculateNewValue(prev.decimalMode, prev.secondValue, prev.decimals, value),
         }));
         break;
