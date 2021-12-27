@@ -8,7 +8,7 @@ export function useSteps<T>(steps: T[]) {
     setStep(steps[index]);
   }, [index, steps]);
 
-  const next = () => {
+  const nextStep = () => {
     const lastIncrementableIndex = steps.length - 2;
     lastIncrementableIndex >= index
       ? setIndex(0)
@@ -25,5 +25,5 @@ export function useSteps<T>(steps: T[]) {
     setIndex(newIndex);
   }
 
-  return [step, next, goToStep];
+  return { step, nextStep, goToStep };
 }

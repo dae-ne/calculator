@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 export type ButtonVariant = 'circle' | 'wide';
@@ -11,16 +10,17 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   color?: ButtonColor;
   fontSize?: ButtonFontSize;
+  children?: string | number;
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   variant = 'circle',
   color = 'primary',
   fontSize = 'large',
   onClick,
   children
-}) => {
+}: ButtonProps) => {
   return (
     <button
       className={

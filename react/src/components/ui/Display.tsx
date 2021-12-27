@@ -1,10 +1,8 @@
-import React from 'react';
-
 export interface DisplayProps {
-  value: number;
+  value: string;
 }
 
-export const Display: React.FC<DisplayProps> = ({ value }) => {
+export const Display = ({ value }: DisplayProps) => {
   return (
     <div className="display">
       <p className="display__content">{value}</p>

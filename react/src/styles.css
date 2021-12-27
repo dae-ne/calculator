@@ -35,7 +35,7 @@ body, button {
 
 .app {
   max-width: 376px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
   padding: 60px 30px;
   background-color: var(--color-main-background);
 }

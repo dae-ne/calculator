@@ -1,17 +1,14 @@
-import React from 'react';
-import { useCalculator } from '../hooks';
 import { Display } from './ui';
 import { Keyboard } from './domain';
+import { useState } from 'react';
 
-export interface AppProps {}
-
-export const App: React.FC<AppProps> = () => {
-  const result = useCalculator();
+export const App = () => {
+  const [displayValue, setDisplayValue] = useState('0');
 
   return (
     <div className="app">
-      <Display value={result} />
-      <Keyboard className='app__keyboard' />
+      <Display value={displayValue} />
+      <Keyboard className='app__keyboard' setDisplayValue={setDisplayValue} />
     </div>
   );
 }
