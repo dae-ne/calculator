@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCalculator } from './logic';
-import { Display } from './components/ui';
-import { Keyboard } from './components/domain';
+import { useCalculator } from '../hooks';
+import { Display } from './ui';
+import { Keyboard } from './domain';
 
 export interface AppProps {}
 
