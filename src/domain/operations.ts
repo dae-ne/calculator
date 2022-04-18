@@ -15,6 +15,5 @@ export const calculate = (a: number, b: number, operation: OperationType) => {
     multiplication: multiply,
     division: divide,
   };
-
   return operationsMap[operation](a, b);
 };

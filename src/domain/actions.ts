@@ -5,6 +5,7 @@ export const clear = (): State => {
   return { type: 'START' };
 };
 
+// TODO: add tests
 export const deleteLast = (currentState: State): State => {
   const { type } = currentState;
   switch (type) {
