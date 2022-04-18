@@ -9,8 +9,24 @@ import {
 import { OperationType } from './operations';
 import { State } from './state';
 
-export class StateMachine {
+export class Calculator {
   private state: State = { type: 'START' };
+
+  get display() {
+    const { type } = this.state;
+    switch (type) {
+      case 'START':
+        return '0';
+      case 'FIRST_VAR':
+        return this.state.firstVar;
+      case 'OPERATION':
+        return `${this.state.firstVar} ${this.state.operation}`;
+      case 'SECOND_VAR':
+        return this.state.secondVar;
+      case 'RESULT':
+        return `= ${this.state.result}`;
+    }
+  }
 
   deleteLast() {
     this.state = deleteLast(this.state);
