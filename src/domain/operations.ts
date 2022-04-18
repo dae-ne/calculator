@@ -1,4 +1,4 @@
-import { OperationsType } from './operations.types';
+export type OperationType = 'addition' | 'subtraction' | 'multiplication' | 'division';
 
 const add = (a: number, b: number) => a + b;
 
@@ -8,15 +8,12 @@ const multiply = (a: number, b: number) => a * b;
 
 const divide = (a: number, b: number) => a / b;
 
-const modulo = (a: number, b: number) => a % b;
-
-export const calculate = (a: number, b: number, operation: OperationsType) => {
+export const calculate = (a: number, b: number, operation: OperationType) => {
   const operationsMap = {
     addition: add,
     subtraction: subtract,
     multiplication: multiply,
     division: divide,
-    modulo: modulo,
   };
 
   return operationsMap[operation](a, b);

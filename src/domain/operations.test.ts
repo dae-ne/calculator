@@ -1,7 +1,11 @@
-import { calculate } from './operations';
-import { OperationsType } from './operations.types';
+import { calculate, OperationType } from './operations';
 
-type CaseType = [OperationsType, number, number, number];
+type CaseType = [
+  operation: OperationType,
+  firstGiven: number,
+  secondGiven: number,
+  expected: number
+];
 
 const cases: CaseType[] = [['addition', 1, 1, 2]];
 
