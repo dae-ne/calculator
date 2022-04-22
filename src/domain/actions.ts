@@ -1,4 +1,4 @@
-import { calculate as calc, OperationType } from './operations';
+import { calculate, OperationType } from './operations';
 import { State } from './state';
 
 export const clear = (): State => {
@@ -37,7 +37,7 @@ export const selectOperation = (currentState: State, operation: OperationType): 
     case 'SECOND_VAR':
       return {
         type: 'OPERATION',
-        firstVar: calc(
+        firstVar: calculate(
           +currentState.firstVar,
           +currentState.secondVar,
           currentState.operation
@@ -45,11 +45,15 @@ export const selectOperation = (currentState: State, operation: OperationType): 
         operation,
       };
     case 'RESULT':
-      return { type: 'OPERATION', firstVar: currentState.result.toString(), operation };
+      return {
+        type: 'OPERATION',
+        firstVar: currentState.result.toString(),
+        operation,
+      };
   }
 };
 
-export const calculate = (currentState: State): State => {
+export const getResult = (currentState: State): State => {
   const { type } = currentState;
   switch (type) {
     case 'START':
@@ -61,7 +65,7 @@ export const calculate = (currentState: State): State => {
     case 'SECOND_VAR':
       return {
         type: 'RESULT',
-        result: calc(+currentState.firstVar, +currentState.secondVar, currentState.operation),
+        result: calculate(+currentState.firstVar, +currentState.secondVar, currentState.operation),
       };
   }
 };
@@ -73,9 +77,16 @@ export const selectNumber = (currentState: State, selectedNumber: number): State
     case 'RESULT':
       return { type: 'FIRST_VAR', firstVar: selectedNumber.toString() };
     case 'FIRST_VAR':
-      return { ...currentState, firstVar: currentState.firstVar + selectedNumber };
+      return {
+        ...currentState,
+        firstVar: currentState.firstVar + selectedNumber,
+      };
     case 'OPERATION':
-      return { ...currentState, type: 'SECOND_VAR', secondVar: selectedNumber.toString() };
+      return {
+        ...currentState,
+        type: 'SECOND_VAR',
+        secondVar: selectedNumber.toString(),
+      };
     case 'SECOND_VAR':
       return {
         ...currentState,
