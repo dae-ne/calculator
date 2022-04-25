@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   State,
   OperationType,
+  clear as domainClear,
   deleteLast as domainDeleteLast,
   selectOperation as domainSelectOperation,
   getResult as domainGetResult,
@@ -28,6 +29,11 @@ const getDisplayValue = (currentState: State) => {
 
 export const useCalculator = () => {
   const [state, setState] = useState<State>({ type: 'START' });
+
+  const clear = () => {
+    const newState = domainClear();
+    setState(newState);
+  };
 
   const deleteLast = () => {
     const newState = domainDeleteLast(state);
@@ -61,6 +67,7 @@ export const useCalculator = () => {
 
   return {
     display: getDisplayValue(state),
+    clear,
     deleteLast,
     selectOperation,
     getResult,

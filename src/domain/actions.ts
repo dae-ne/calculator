@@ -90,7 +90,8 @@ export const selectNumber = (currentState: State, selectedNumber: number): State
     case 'SECOND_VAR':
       return {
         ...currentState,
-        firstVar: currentState.secondVar[0] === '0' ? '0' : currentState.secondVar + selectedNumber,
+        secondVar:
+          currentState.secondVar[0] === '0' ? '0' : currentState.secondVar + selectedNumber,
       };
   }
 };
