@@ -1,8 +1,8 @@
-import React from 'react';
+import type { NextPage } from 'next'
 import { OperationType } from '../domain';
-import { useCalculator } from './useCalculator';
+import { useCalculator } from '../hooks/useCalculator';
 
-export const App = () => {
+const Home: NextPage = () => {
   const {
     display,
     clear,
@@ -52,4 +52,6 @@ export const App = () => {
       </div>
     </div>
   );
-};
+}
+
+export default Home
