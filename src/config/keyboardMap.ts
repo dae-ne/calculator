@@ -57,7 +57,7 @@ export const createKeyboardMap = ({
     action: () => selectOperation('division')
   },
   ...setRow([7, 8, 9], 'multiplication', selectNumber, selectOperation),
-  ...setRow([4, 5, 6], 'division', selectNumber, selectOperation),
+  ...setRow([4, 5, 6], 'subtraction', selectNumber, selectOperation),
   ...setRow([1, 2, 3], 'addition', selectNumber, selectOperation),
   {
     text: '0',
