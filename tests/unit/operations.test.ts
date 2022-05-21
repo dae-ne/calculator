@@ -1,10 +1,10 @@
-import { calculate, OperationType } from './operations';
+import { calculate, OperationType } from '../../src/domain/operations';
 
 type CaseType = [
   operation: OperationType,
   firstGiven: number,
   secondGiven: number,
-  expected: number
+  expected: number,
 ];
 
 const cases: CaseType[] = [['addition', 1, 1, 2]];

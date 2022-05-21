@@ -11,6 +11,7 @@ import {
   selectZero as domainSelectZero,
   selectDot as domainSelectDot,
 } from './domain';
+import { getOperationSymbol } from './config/operationSymbols';
 
 const getDisplayValue = (currentState: State) => {
   const { type } = currentState;
@@ -20,9 +21,9 @@ const getDisplayValue = (currentState: State) => {
     case 'FIRST_VAR':
       return currentState.firstVar;
     case 'OPERATION':
-      return `${currentState.firstVar} ${currentState.operation}`;
+      return getOperationSymbol(currentState.operation);
     case 'SECOND_VAR':
-      return `${currentState.firstVar} ${currentState.operation} ${currentState.secondVar}`;
+      return `${getOperationSymbol(currentState.operation)} ${currentState.secondVar}`;
     case 'RESULT':
       return `= ${currentState.result}`;
   }

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useMemo } from 'react';
 import { Button } from '../Button';
-import { createKeyboardMap } from '../keyboardMap';
+import { createKeyboardMap } from '../config/keyboardMap';
 import { useCalculator } from '../useCalculator';
 
 const Calculator: NextPage = () => {
