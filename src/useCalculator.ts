@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Actions } from './Actions';
 import {
   State,
   OperationType,
@@ -9,7 +10,7 @@ import {
   selectNumber as domainSelectNumber,
   selectZero as domainSelectZero,
   selectDot as domainSelectDot,
-} from '../domain';
+} from './domain';
 
 const getDisplayValue = (currentState: State) => {
   const { type } = currentState;
@@ -27,7 +28,7 @@ const getDisplayValue = (currentState: State) => {
   }
 };
 
-export const useCalculator = () => {
+export const useCalculator = (): Actions & { display: string } => {
   const [state, setState] = useState<State>({ type: 'START' });
 
   const clear = () => {

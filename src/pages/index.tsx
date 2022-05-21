@@ -1,57 +1,30 @@
 import type { NextPage } from 'next'
-import { OperationType } from '../domain';
-import { useCalculator } from '../hooks/useCalculator';
+import { useMemo } from 'react';
+import { Button } from '../Button';
+import { createKeyboardMap } from '../keyboardMap';
+import { useCalculator } from '../useCalculator';
 
-const Home: NextPage = () => {
-  const {
-    display,
-    clear,
-    deleteLast,
-    selectZero,
-    selectDot,
-    selectNumber,
-    selectOperation,
-    getResult,
-  } = useCalculator();
-
-  const renderNumberButtons = () => {
-    const range = Array.from({ length: 9 }, (_, i) => i + 1);
-    return range.map((n) => (
-      <button key={n} onClick={() => selectNumber(n)}>
-        {n}
-      </button>
-    ));
-  };
-
-  const renderOperationButtons = () => {
-    type OperationSigns = [name: OperationType, sign: string];
-    const operationSigns: OperationSigns[] = [
-      ['addition', '+'],
-      ['subtraction', '-'],
-      ['multiplication', '*'],
-      ['division', '/'],
-    ];
-    return operationSigns.map(([name, sign]) => (
-      <button key={name} onClick={() => selectOperation(name)}>
-        {sign}
-      </button>
-    ));
-  };
+const Calculator: NextPage = () => {
+  const { display, ...actions } = useCalculator();
+  const buttons = useMemo(() => createKeyboardMap(actions), [actions]);
 
   return (
-    <div>
-      <h1>{display}</h1>
-      <div>
-        <button onClick={clear}>CE</button>
-        <button onClick={deleteLast}>del</button>
-        {renderNumberButtons()}
-        <button onClick={selectZero}>0</button>
-        <button onClick={selectDot}>.</button>
-        {renderOperationButtons()}
-        <button onClick={getResult}>=</button>
-      </div>
+    <div className="container">
+      <p className="display">{display}</p>
+      <ul className="keyboard">
+        {buttons.map(item => {
+          const { text, color, width, action } = item;
+          return (
+            <li key={text}>
+              <Button color={color} width={width} onClick={action}>
+                {text}
+              </Button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
-}
+};
 
-export default Home
+export default Calculator;
