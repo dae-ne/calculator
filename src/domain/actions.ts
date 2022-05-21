@@ -109,7 +109,7 @@ export const selectZero = (currentState: State): State => {
     case 'SECOND_VAR':
       return {
         ...currentState,
-        firstVar: currentState.secondVar[0] === '0' ? '0' : currentState.secondVar + '0',
+        secondVar: currentState.secondVar[0] === '0' ? '0' : currentState.secondVar + '0',
       };
   }
 };
