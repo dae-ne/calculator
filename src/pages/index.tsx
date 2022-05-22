@@ -5,12 +5,14 @@ import { createKeyboardMap } from '../config/keyboardMap';
 import { useCalculator } from '../useCalculator';
 
 const Calculator: NextPage = () => {
-  const { display, ...actions } = useCalculator();
+  const { output, ...actions } = useCalculator();
   const buttons = useMemo(() => createKeyboardMap(actions), [actions]);
 
   return (
     <div className="container">
-      <p className="display">{display}</p>
+      <p className="output">
+        <output>{output}</output>
+      </p>
       <ul className="keyboard">
         {buttons.map(item => {
           const { text, color, width, action } = item;

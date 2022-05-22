@@ -13,7 +13,7 @@ import {
 } from './domain';
 import { getOperationSymbol } from './config/operationSymbols';
 
-const getDisplayValue = (currentState: State) => {
+const getOutput = (currentState: State) => {
   const { type } = currentState;
   switch (type) {
     case 'START':
@@ -29,7 +29,7 @@ const getDisplayValue = (currentState: State) => {
   }
 };
 
-export const useCalculator = (): Actions & { display: string } => {
+export const useCalculator = (): Actions & { output: string } => {
   const [state, setState] = useState<State>({ type: 'START' });
 
   const clear = () => {
@@ -68,7 +68,7 @@ export const useCalculator = (): Actions & { display: string } => {
   };
 
   return {
-    display: getDisplayValue(state),
+    output: getOutput(state),
     clear,
     deleteLast,
     selectOperation,
