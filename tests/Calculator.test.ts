@@ -1,5 +1,5 @@
-import { CalculatorPageObject } from "./Calculator.po";
-import userEvent from "@testing-library/user-event";
+import { CalculatorPageObject } from './Calculator.po';
+import userEvent from '@testing-library/user-event';
 
 it('should add two numbers', async () => {
   // arrange

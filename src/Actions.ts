@@ -1,4 +1,4 @@
-import { OperationType } from "./domain";
+import { OperationType } from './domain';
 
 export interface Actions {
   clear: () => void,
